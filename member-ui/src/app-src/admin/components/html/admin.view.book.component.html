@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Books</h3>
+  <div class="row">
+    <div *ngFor="let movda of bookListData;" class="col-md-3">
+      <img [src]="movda.image" width="265" height="300" />
+      <p><b>Title: {{movda.bookName}}</b></p>
+      <p>Publish Date: {{movda.publishDates|date}}</p>
+      <p>Authur: {{movda.author}}</p>
+      <p>Rate: {{movda.rate}}</p>
+    </div>
+  </div>
+</div>

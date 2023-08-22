@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Member List</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <td><b>S/N</b></td>
+        <td><b>Member Id</b></td>
+        <td><b>Full Name</b></td>
+        <td><b>Email Address</b></td>
+        <td><b>Phone Number</b></td>
+        <td><b>Password</b></td>
+        <td align="right"><b>Status</b></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let userda of memberdatalist; index as i;">
+        <td>{{i + 1}}</td>
+        <td>{{userda.memberId}}</td>
+        <td>{{userda.firstName}} {{userda.lastName}}</td>
+        <td>{{userda.emailAddress}}</td>
+        <td>{{userda.phoneNumber}}</td>
+        <td>{{userda.password}}</td>
+        <td align="right">
+          <label *ngIf="userda.isActivated=='Y'" class="text-success fst-italic text-sm-end">Activated</label>
+          <button (click)="activateMember(userda.memberId,$event.target)" *ngIf="userda.isActivated=='N'" class="btn btn-warning"><i class="fa fa-save me-2"></i>Active</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

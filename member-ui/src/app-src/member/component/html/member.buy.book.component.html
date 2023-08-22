@@ -1,0 +1,59 @@
+<div class="container">
+  <h3>Purchase Book</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <p>&nbsp;</p>
+      <form [formGroup]="frmGrp" (ngSubmit)="saveMovie()" autocomplete="off">
+        <div class="row mb-3">
+          <label class="col-md-3 text-end">Card Type:</label>
+          <div class="col-md-7">
+            <select class="form-control" formControlName="cardtype">
+              <option value="Master Card">Master Card</option>
+              <option value="Visa Card">Visa Card</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-end">Card Number:</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control" maxlength="16" formControlName="cardnumber" placeholder="Enter Card Number"/>
+            <small *ngIf="val('cardnumber','required')" class="text-danger fst-italic">Enter Card Number</small>
+            <small *ngIf="val('cardnumber','pattern')" class="text-danger fst-italic">Card Number cannot contain alphabet</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-end">CVV Number:</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control" maxlength="3" formControlName="cardcvvnumber" placeholder="Enter CVV Number"/>
+            <small *ngIf="val('cardcvvnumber','required')" class="text-danger fst-italic">Enter Card CVV Number</small>
+            <small *ngIf="val('cardcvvnumber','pattern')" class="text-danger fst-italic">Card CVV Number cannot contain alphabet</small>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6"></div>
+          <div class="col-md-4">
+            <div class="float-end">
+              <div *ngIf="loading">
+                <i class="fa fa-sync fa-spin me-1"></i>Please wait...
+              </div>
+              <button *ngIf="!loading" class="btn btn-success" type="submit">
+                <i class="fa fa-save me-2"></i>Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-9">
+          <img [src]="moviedata.image" width="265" height="300"/>
+          <p><b>Title: {{moviedata.bookName}}</b></p>
+          <p>Publish Date: {{moviedata.publishDates|date}}</p>
+          <p>Author: {{moviedata.author}}</p>
+          <p>Rate: {{moviedata.rate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

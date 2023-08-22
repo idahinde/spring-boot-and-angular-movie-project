@@ -1,0 +1,60 @@
+<div class="container">
+  <h3>Add Books</h3>
+  <div class="row">
+    <div class="col-md-7">
+      <form autocomplete="off" (ngSubmit)="saveMovie()" [formGroup]="frmGrp">
+        <div class="row mb-3">
+          <label class="col-md-3 text-sm-end">Book Title:</label>
+          <div class="col-md-8">
+            <input class="form-control" placeholder="Book title" formControlName="bookName" type="text"/>
+            <small class="text-danger" *ngIf="req('bookName')">Enter Book Title</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-sm-end">Author:</label>
+          <div class="col-md-8">
+            <input class="form-control" placeholder="Author" formControlName="author" type="text"/>
+            <small class="text-danger" *ngIf="req('author')">Enter Author</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-sm-end">Rate:</label>
+          <div class="col-md-8">
+            <input class="form-control" placeholder="Rate" formControlName="rate" type="text"/>
+            <small class="text-danger" *ngIf="req('rate')">Enter rate</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-sm-end">Published Date:</label>
+          <div class="col-md-8">
+            <input class="form-control" [bsConfig]="bsConfig" [outsideClick]="false" bsDatepicker [maxDate]="maxDate" placeholder="Published date" readonly="readonly" formControlName="publishDates" type="text"/>
+            <small class="text-danger" *ngIf="req('publishDates')">Select Publish Date</small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-md-3 text-sm-end">Movie Image:</label>
+          <div class="col-md-8">
+            <input class="form-control" (change)="uploadImage($event)" placeholder="Movie title" formControlName="tsbkimage" type="file"/>
+            <small class="text-danger" *ngIf="req('tsbkimage')">Select Movie Image</small>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6"></div>
+          <div class="col-md-5">
+            <div class="float-end">
+              <div *ngIf="loading">
+                <i class="fa fa-sync fa-spin me-1"></i>Please wait...
+              </div>
+              <button *ngIf="!loading" class="btn btn-success" type="submit">
+                <i class="fa fa-save me-2"></i>Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3">
+      <img height="325" [src]="imageBase64" width="270"/>
+    </div>
+  </div>
+</div>
